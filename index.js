@@ -7,26 +7,26 @@ async function mainn() {
     let resp = await a.text();
     let div = document.createElement("div");
     div.innerHTML = resp;
-    let td = div.getElementsByTagName("a");
+    let musiclist = div.getElementsByTagName("a");
 
     // console.log(td)
     // console.log(td[q].href);
-    return [td[q].href, td[q]];
+    return [musiclist[q].href, musiclist[q]];
   }
 
-  async function so(f) {
+  async function songlinking(f) {
     let x = await song(f);
     // console.log(x[1])
     return [x[0], x[1]];
   }
   async function songnameing(number) {
-    let ans = await so(number);
+    let ans = await songlinking(number);
     document.querySelector(".songname").innerHTML = ans[1].innerHTML;
     console.log(ans[1].innerHTML);
   }
 
   async function main(l) {
-    let t = await so(l);
+    let t = await songlinking(l);
     // console.log(t)
 
     mp3.src = t[0];
@@ -84,6 +84,7 @@ async function mainn() {
   //  console.log(kit)
 
   // console.log(listofsongs);
+  //songtitle assigning in array
   let ganna = document.querySelector(".down").getElementsByTagName("ul")[0];
 
   ganna.innerHTML = "";
@@ -116,6 +117,7 @@ async function mainn() {
       })
     );
   });
+  // loading song durations
   mp3.onloadedmetadata = function () {
     const minutesduration = Math.floor(mp3.duration / 60);
     const secondsduration = Math.floor(mp3.duration % 60);
@@ -125,7 +127,7 @@ async function mainn() {
     // console.log(mp3.duration);
     document.querySelector(".time").innerHTML = format;
   };
-
+//current time of song display
   mp3.addEventListener("timeupdate", () => {
     const minutes = Math.floor(mp3.currentTime / 60);
     const seconds = Math.floor(mp3.currentTime % 60);
@@ -134,7 +136,7 @@ async function mainn() {
       .padStart(2, "0")}`;
     document.querySelector(".currenttime").innerHTML = formattedTime;
   });
-
+// seekbar functionality
   mp3.addEventListener("timeupdate", () => {
     let j = (mp3.currentTime / mp3.duration) * 100;
 
