@@ -9,8 +9,6 @@ async function mainn() {
     div.innerHTML = resp;
     let musiclist = div.getElementsByTagName("a");
 
-    // console.log(td)
-    // console.log(td[q].href);
     return [musiclist[q].href, musiclist[q]];
   }
 
