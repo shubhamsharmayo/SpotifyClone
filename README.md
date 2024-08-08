@@ -1,3 +1,3 @@
 # spotifyclone
 
-https://shubhamsharmayo.github.io/spotifyclone/
+https://shubhamsharmayo.github.io/SpotifyClone/
